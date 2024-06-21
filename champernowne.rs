@@ -5,18 +5,44 @@ use std::io::Error;
 use std::io::SeekFrom;
 
 pub fn initialize_champernowne(range: i64) -> String {
+    /// # initialize_champernowne(range: i64) -> String
+    /// Creates a text file which stores the values of champernowne up until a range
+    /// ## Input
+    /// Input a range (max) (inclusive) up to the 64 bit integer limit 
+    /// |_ I dont reccomend generating over 100 billion digits or range=~10200000000
+    /// ## Output
+    /// Outputs the string "Done" and the src/bin/champernowne.txt
+    
+    // Define the string value
     let mut constant: String = String::new();
     for i in 1..=range {
+        // Append the i value to the string (concatenate)
         write!(&mut constant, "{}", i).unwrap();
     }
-    std::fs::write("src/bin/champernowne100k.txt", constant).expect("Unable to write file");
+
+    //Writes to the file
+    std::fs::write("src/bin/champernowne.txt", constant).expect("Unable to write file");
+
+    //Returns once the function is done
     return String::from("Done");
 }
 
 pub fn read_champernowne(filename: &str, n: usize) -> Result<char, Error> {
+    /// # read_champernowne(filename: &str, n: usize) -> Result<char, Error>
+    /// Reads from the text file which stores the values of champernowne and returns the n value
+    /// ## Input
+    /// Input a filename from which the function reads
+    /// Input a nth digit which will be printed
+    /// ## Output
+    /// RETURNS the status code and the byte (character)
+
+    //Opens fine
     let mut file = File::open(filename)?;
+
+    //Seeks through the file until the nth digit
     file.seek(SeekFrom::Start(n as u64))?;
 
+    //Reads the value and returns
     let mut byte = [0; 1];
     file.read_exact(&mut byte)?;
 
