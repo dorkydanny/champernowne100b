@@ -13,4 +13,7 @@ champ(mut i: u32) prints out the ith digit of champernowne. Quick and does not c
 
 #### Note: limited by the u32 power (so around i=~700m)
 
+### Option 3 - r2champernowne linux binary
+asks you for the nth digit and generates. Used for quick lookups. Little customization.
+
 ## NOTE: This string of bytes is not in decimal form (0.n), instead taking on the integral form of (n).
