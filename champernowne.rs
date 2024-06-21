@@ -50,9 +50,13 @@ pub fn read_champernowne(filename: &str, n: usize) -> Result<char, Error> {
 }
 
 fn main() {
+    
+    //Sample input
     let mut n = 1;
     for _ in 1..=7 {
-        match read_champernowne("src/bin/champernowne1m.txt", n - 1) {
+        
+        // match case for errors
+        match read_champernowne("src/bin/champernowne.txt", n - 1) {
             Ok(c) => println!("The character at index {} is: {}", n, c),
             Err(e) => println!("Error reading file: {}", e),
         }
